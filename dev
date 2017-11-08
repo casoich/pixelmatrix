@@ -1,0 +1,18 @@
+#!/bin/sh
+# launcher.sh
+# navigate to home directory, then to this directory, then execute python script, then back home
+
+cd /
+cd home/pi/Adafruit_DotStar_Pi
+rmate pixelmatrix.py
+cd ~
+rmate master-server.js
+rmate services.js
+cd ~/app
+rmate index.html
+rmate styles.css
+rmate app.module.js
+cd ~/app/templates
+rmate home.template.html
+cd ~/app/components
+rmate home.component.js

@@ -1,0 +1,23 @@
+<div class=container>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <!-- Single button -->
+                    <form>
+                        <div>
+                            <label for="brightnessSlider">Brightness:&nbsp;{{params.brightness}}</label>
+                            <input type="range" 
+                            orient="vertical"
+                            id="brightnessSlider" 
+                            name="Brightness" 
+                            ng-model="params.brightness" 
+                            min="0" max="255" 
+                            class="slider valueslider">
+]                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

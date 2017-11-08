@@ -1,0 +1,59 @@
+<div class=container>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group" uib-dropdown is-open="status.isopen">
+                <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+        {{currentShow.name}} <span class="caret"></span>
+      </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                    <li role="menuitem" ng-repeat="item in shows">
+                        <a ng-click="dropboxitemselected(item)">{{item.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <!-- Single button -->
+                    <form>
+                        <div ng-show="currentShow.paramVisibility.brightness">
+                            <label for="brightnessSlider">Brightness:&nbsp;{{params.brightness}}</label>
+                            <input type="range" id="brightnessSlider" name="Brightness" ng-model="params.brightness" min="0" max="255" class="slider valueslider">
+                            <div class="spacer10">&nbsp;</div>
+                        </div>
+                        <div ng-show="currentShow.paramVisibility.hue">
+                            <label for="hueSlider">Hue:&nbsp;{{params.hue}}</label>
+                            <input type="range" name="hue" id="hueSlider" ng-model="params.hue" min="0" max="255" class="slider hueslider">
+                            <div class="spacer10">&nbsp;</div>
+                        </div>
+                        <div ng-show="currentShow.paramVisibility.hue2">
+                            <label for="hueSlider2">Accent Hue:&nbsp;{{params.hue2}}</label>
+                            <input type="range" name="hue2" id="hueSlider2" ng-model="params.hue2" min="0" max="255" class="slider hueslider">
+                            <div class="spacer10">&nbsp;</div>
+                        </div>
+                        <div ng-show="currentShow.paramVisibility.saturation">
+                            <label for="saturationSlider">Saturation:&nbsp;{{params.saturation}}</label>
+                            <input type="range" id="saturationSlider" name="Saturation" ng-model="params.saturation" min="0" max="100" class="slider valueslider">
+                            <div class="spacer10">&nbsp;</div>
+                        </div>
+
+                        <div ng-show="currentShow.paramVisibility.count">
+                            <label for="countSlider">Count:&nbsp;{{params.count}}</label>
+                            <input type="range" name="count" id="countSlider" ng-model="params.count" min="0" max="100" class="slider ">
+                            <div class="spacer10">&nbsp;</div>
+                        </div>
+                        <div ng-show="currentShow.paramVisibility.speed">
+                            <label for="speedSlider">Speed:&nbsp;{{params.speed}}</label>
+                            <input type="range" name="speed" id="speedSlider" ng-model="params.speed" min="0" max="100" class="slider ">
+                        </div>
+                        <div ng-show="currentShow.paramVisibility.offset">
+                            <label for="offsetSlider">Offset:&nbsp;{{params.offset}}</label>
+                            <input type="range" name="offset" id="offsetSlider" ng-model="params.offset" min="0" max="100" class="slider ">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

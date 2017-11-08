@@ -1,0 +1,135 @@
+body {
+	background-color: black;
+}
+
+nav a{
+	cursor:pointer;
+}
+
+.glyphicon-chevron-left{
+	color:black;
+}
+
+.glyphicon-chevron-right{
+	color:black;
+}
+
+.carousel-prev{
+	position:absolute;
+	top:50%;
+	left:1%;
+	font-size:50px;
+}
+
+.carousel-prev{
+	position:absolute;
+	top:50%;
+	left:1%;
+	font-size:50px;
+	color: #337ab7;
+	opacity: .5;
+}
+
+.carousel-prev:hover{
+	color: #337ab7;
+	cursor: pointer;
+	opacity: 1;
+}
+
+.carousel-next{
+	position:absolute;
+	top:50%;
+	right:1%;
+	font-size:50px;
+	color: #337ab7;
+	opacity: .5;
+}
+
+.carousel-next:hover{
+	color: #337ab7;
+	cursor: pointer;
+	opacity: 1;
+}
+.dropdown > button {
+	border-radius:15px 15px 0 0;
+
+}
+.dropdown {
+	border-radius:15px 15px 0 0;
+}
+.dropdown > button {
+	font-size: 24px
+}
+.dropdown-menu {
+  width: 100%; 
+  left: 50%;
+  right: auto;
+  text-align: center;
+  font-size: 24px;
+  transform: translate(-50%, 0);
+}
+.panel {
+	background-color: black;
+	border-radius: 0 0 15px 15px
+}
+.btn-group.dropdown {
+ width: 100%;
+}.btn-group.dropdown > button {
+ height: 50px;
+}
+.btn-group.dropdown > ul > li > a {
+    line-height: 50px;
+    height: 50px;
+    padding-top: 0px;
+}
+.btn-group.dropdown button{
+ width: 100%;
+}
+.slider {
+	  -webkit-appearance: none;
+	  -webkit-background-clip: padding-box;
+	  background-color: black;
+
+}
+.slider:focus {
+	outline:none;
+}
+.slider::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000031;
+  border: 1px solid #00001E;
+  height: 28px;
+  width: 28px;
+  border-radius: 30px;
+  background: #FFFFFF;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  margin-top: 1px;
+
+}
+.slider::-webkit-slider-runnable-track {
+	  -webkit-appearance: none;
+
+	height:30px;
+	background-color: #222;
+	border-radius: 15px;
+
+}
+.valueslider::-webkit-slider-runnable-track {
+	background: -moz-linear-gradient(left, #000000 0%, #ffffff 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #000000 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #000000 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 ); /* IE6 */
+}
+.hueslider::-webkit-slider-runnable-track {
+    background: -moz-linear-gradient(left, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -ms-linear-gradient(left, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -o-linear-gradient(left, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#ff0000), color-stop(0.17, #ffff00), color-stop(0.33, #00ff00), color-stop(0.5, #00ffff), color-stop(0.67, #0000ff), color-stop(0.83, #ff00ff), to(#ff0000));
+    background: -webkit-linear-gradient(left, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+}
+
+form label {
+	color:#888;
+}
