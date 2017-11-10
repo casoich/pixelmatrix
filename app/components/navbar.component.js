@@ -1,4 +1,4 @@
-angular.module('aquaponics-app').component('navbar', {
+angular.module('pixelmatrix-app').component('navbar', {
     templateUrl: '/templates/navbar.template.html',
     controller: ['$scope', '$http', '$location',  function HomeController ($scope, $http, $location) {
         var self = this;

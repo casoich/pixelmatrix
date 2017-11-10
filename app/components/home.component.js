@@ -1,4 +1,4 @@
-angular.module('aquaponics-app').component('home', {
+angular.module('pixelmatrix-app').component('home', {
     templateUrl: '/templates/home.template.html',
     controller: ['$scope', 
     '$rootScope', 
@@ -145,61 +145,11 @@ angular.module('aquaponics-app').component('home', {
         $scope.pushParams($scope.params);
     }, true);
 
-    //  $scope.celsius = "---";
-    //  $scope.fahrenheit = "---";
-    //  $scope.displayCelsius = false;
-    //  $scope.humidity = "---";
-    //  $scope.watertemp = 'n/a';
-
-    //  $scope.changeTempDisplay = function changeTempDisplay () {
-    //     $scope.displayCelsius = !$scope.displayCelsius;
-    // };
     $scope.pushParams = function pushParams(params) {
       $http.post('/param',{params:params}).then(function pushParamsSuccess () {
             //console.log("pushParamsSuccess");
         });
     }
-    // $scope.startFeeder = function startFeeder (slide) {
-    //     slide.feedingInProgress = true;
-    //     $http.post('/feeder/start', {units: slide.units}).then(function startFeederSuccess (response) {
-    //         slide.feedingInProgress = false;
-    //     }, function startFeederError () {
-    //         slide.feedingInProgress = false;
-    //     });
-    // };
-
-    // $scope.stopFeeder = function stopFeeder (slide) {
-    //     $http.post('/feeder/stop').then(function stopFeederSuccess () {
-    //         slide.feedingInProgress = false;
-    //     });
-    // };
-
-    // $scope.toggleLight = function(slide){
-    //    if(slide.light){
-    //     $http.post('/light/off').then(function lightOffSuccess (response) {
-    //         slide.light = false;
-    //     });
-    // }
-    // else{
-    //     $http.post('/light/on').then(function lightOnSuccess (response) {
-    //         slide.light = true;
-    //     }, function(){ console.info(response); });
-    // }
-// };
-
-// $scope.setMaxFeedUnits = function(slide, max){
-//    $http.post('/feed/max', { max: max}).then(function (){
-//       slide.maxFeedUnitsUnlocked = false;
-//   });
-// }
-
-// function getMaxFeedUnits (slide){
-//     $http.get('/feed/max').then(function(response){
-//             //alert(response.data.max);
-//             slide.maxFeedUnits = response.data.max;
-//         });
-// }
-
 function getparams (){
   console.log("home.component is doing getparams()");
     $http.get('/param').then(function(response){
@@ -225,12 +175,6 @@ getparams();
                 }
             }
 
-            // readSensorsAndInit();
-            // getMaxFeedUnits($scope.carousel.slides[$scope.active]);
-
-            // if (!interval) {
-            //             interval = $interval(readSensorsAndInit, 10000); // poll every 10 seconds for updates
-            //         }
                 } else {
                    console.log("the /wtf response was weird:",JSON.stringify(response));
 
@@ -265,38 +209,5 @@ function getIP (slide) {
     return window.location.hostname;
 }
 
-// function readSensorsAndInit () {
-//     var slide0 = $scope.carousel.slides[0];
-//     var feedUrl = 'http://' + getIP(slide0) + '/static/camfeed.html?ip=pi:aquaponics@';		
-
-//     (function (slide) {
-//       slide.feedUrl = $sce.trustAsResourceUrl(feedUrl + getIP(slide) + ':81');
-//       slide.feedLink = $sce.trustAsResourceUrl('http://pi:aquaponics@' + getIP(slide) + ':81/html/');
-//       $http.get('/th').then(function thSuccess (response) {
-//         $scope.celsius = response.data.temperature_celsius;
-//         $scope.fahrenheit = response.data.temperature_fahrenheit;
-//         $scope.humidity = response.data.humidity;
-//     });
-//       $http.get('/wt').then(function wtSuccess (response) {
-//           if (response && response.data && response.data.temperature_fahrenheit)
-//              $scope.watertemp = response.data.temperature_fahrenheit;
-//          else
-//              $scope.watertemp = 'n/a';
-//      })
-//       .catch(function () {
-//           $scope.watertemp = 'n/a';
-//       });
-//   })(slide0);
-
-//   (function (slide) {
-//       slide.feedUrl = $sce.trustAsResourceUrl(feedUrl + getIP(slide) + ':81');
-//       slide.feedLink = $sce.trustAsResourceUrl('http://pi:aquaponics@' + getIP(slide) + ':81/html/');			
-//   })($scope.carousel.slides[1]);
-
-//   (function (slide) {
-//       slide.feedUrl = $sce.trustAsResourceUrl(feedUrl + getIP(slide) + ':81');
-//       slide.feedLink = $sce.trustAsResourceUrl('http://pi:aquaponics@' + getIP(slide) + ':81/html/');
-//   })($scope.carousel.slides[2]);
-// }
 }]
 });

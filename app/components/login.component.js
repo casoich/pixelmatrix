@@ -1,4 +1,4 @@
-angular.module('aquaponics-app').component('login', {
+angular.module('pixelmatrix-app').component('login', {
     templateUrl: '/templates/login.template.html',
     controller: ['$scope', '$rootScope', '$http', '$location', function LoginController ($scope, $rootScope, $http, $location) {
         var self = this;

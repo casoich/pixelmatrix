@@ -80,16 +80,6 @@ app.get('/wtf',auth, services.wtf);
 
 app.get('/param',auth, services.getParams);
 
-// Services which also exist on secondary servers (and therefore should be proxied)
-// app.post('/feeder/start', auth, proxy_request, services.startFeeder);
-// app.post('/feeder/stop', auth, proxy_request, services.stopFeeder);
-// app.get('/feed/max', auth, proxy_request, services.getMaxFeed);
-// app.post('/feed/max', auth, Auth.checkRole, proxy_request, services.saveMaxFeed);
-// app.get('/schedule', auth, proxy_request, services.getSchedule);
-// app.post('/schedule', auth, proxy_request, services.createSchedule);
-// app.put('/schedule/:id', auth, proxy_request, services.updateSchedule);
-// app.delete('/schedule/:id', auth, proxy_request, services.deleteSchedule);
-
 // error handler
 app.use(function errorHandler(err, req, res, next) {
     console.log(util.inspect(req));

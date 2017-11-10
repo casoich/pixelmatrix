@@ -1,14 +1,13 @@
-angular.module('aquaponics-app').component('brightness', {
+angular.module('pixelmatrix-app').component('brightness', {
     templateUrl: '/templates/brightness.template.html',
     controller: ['$scope', 
     '$rootScope', 
     '$http', 
     '$location', 
     '$interval', 
-    '$sce', BrightnessController ($scope, $rootScope, $http, $location, $interval, $sce) {
+        '$sce',
+    function BrightnessController($scope, $rootScope, $http, $location, $interval, $sce) {
         var self = this;
-
-
         if (!$scope.params) {
     $scope.params={
         brightness:"255"

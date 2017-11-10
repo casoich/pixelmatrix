@@ -1,4 +1,4 @@
-angular.module('aquaponics-app').factory('authHandler', ['$location', '$rootScope', function authHandler ($location, $rootScope) {
+angular.module('pixelmatrix-app').factory('authHandler', ['$location', '$rootScope', function authHandler ($location, $rootScope) {
     return {
         request: function (config) {
             var token = $rootScope.token;

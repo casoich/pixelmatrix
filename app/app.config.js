@@ -1,4 +1,4 @@
-angular.module('aquaponics-app').config(['$locationProvider', '$routeProvider', '$httpProvider', function config ($locationProvider, $routeProvider, $httpProvider) {
+angular.module('pixelmatrix-app').config(['$locationProvider', '$routeProvider', '$httpProvider', function config ($locationProvider, $routeProvider, $httpProvider) {
     $locationProvider.hashPrefix('!');
     
     // Set http interceptor to handle auth

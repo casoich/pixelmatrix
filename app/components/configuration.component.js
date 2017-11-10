@@ -1,4 +1,4 @@
-angular.module('aquaponics-app').component('configuration', {
+angular.module('pixelmatrix-app').component('configuration', {
     templateUrl: '/templates/configuration.template.html',
     controller: ['$scope', '$location', '$http', function ConfigurationController ($scope, $location, $http) {
         var self = this;

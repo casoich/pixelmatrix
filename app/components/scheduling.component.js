@@ -1,4 +1,4 @@
-angular.module('aquaponics-app').component('scheduling', {
+angular.module('pixelmatrix-app').component('scheduling', {
     templateUrl: '/templates/scheduling.template.html',
     controller: ['$scope', '$rootScope', '$http', function SchedulingController ($scope, $rootScope, $http) {
         var self = this;
