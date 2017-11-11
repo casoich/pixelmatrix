@@ -75,7 +75,8 @@ app.head('/ping', auth, function (req, res, next) {
 app.get('/config', auth, services.getConfig);
 app.put('/config', auth, services.updateConfig);
 
-app.get('/brightness',auth, services.getConfig);
+app.get('/brightness', auth, services.getConfig);
+app.put('/brightness', auth, services.updateConfig);
 app.get('/wtf',auth, services.wtf);
 
 app.get('/param',auth, services.getParams);
@@ -83,7 +84,7 @@ app.get('/param',auth, services.getParams);
 // error handler
 app.use(function errorHandler(err, req, res, next) {
     console.log(util.inspect(req));
-    res.status(500).json({'error': 'master-server.js: An error occurred on:'+req+':' + err});
+    //res.status(500).json({'error': 'master-server.js: An error occurred on:'+req+':' + err});
 });
 
 app.listen(80, function listen () {
