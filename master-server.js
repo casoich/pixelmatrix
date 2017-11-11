@@ -83,7 +83,7 @@ app.get('/param',auth, services.getParams);
 
 // error handler
 app.use(function errorHandler(err, req, res, next) {
-    console.log(util.inspect(req));
+    //console.log(util.inspect(req));
     //res.status(500).json({'error': 'master-server.js: An error occurred on:'+req+':' + err});
 });
 
