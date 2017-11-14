@@ -17,6 +17,8 @@
                 <div class="panel-body">
                     <!-- Single button -->
                     <form>
+                        <!-- disabled conditional for brightness, so it shows all the time -->
+                        <!-- <div ng-show="currentShow.paramVisibility.brightness"> -->
                         <div ng-show="currentShow.paramVisibility.brightness">
                             <label for="brightnessSlider">Brightness:&nbsp;{{params.brightness}}</label>
                             <input type="range" id="brightnessSlider" name="Brightness" ng-model="params.brightness" min="0" max="255" class="slider valueslider">

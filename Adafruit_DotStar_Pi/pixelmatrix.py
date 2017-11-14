@@ -203,6 +203,42 @@ class ScurryElement:
 						)
 					)
 
+class VortexElement:
+	'defines parameters for one vortex element'
+	def __init__(self,x,y,dx,dy,drift,color,radius):
+		self.x=x
+		self.y=y
+		self.dx=dx
+		self.dy=dy
+		self.drift=drift
+		self.color=color
+		self.radius=radius
+
+	def step(self):
+		spd=float(clientParams["speed"])/50
+		self.dx+=(self.x-pixelrow*float(clientParams["offset"])/100)/pixelrow/200+random.uniform(-0.02*spd,.02*spd)
+		self.dy+=random.uniform(-0.01*spd,.01*spd)
+		self.x+=self.dx
+		self.y+=self.dy
+		if (self.x<0 or self.x>pixelrow):
+			self.x=pixelrow*float(clientParams["offset"])/100
+			self.dx=0
+			self.dy=0
+	def draw(self,idx):
+		scaling=1-abs((self.x-(pixelrow/2))/pixelrow)
+		bright=float(clientParams["brightness"])/255
+		if (idx<=int(clientParams["count"])):
+			for x in range(int(self.x-self.radius*scaling),int(self.x+self.radius*scaling+1)):         
+				for y in range(int(self.y-self.radius*scaling),int(self.y+self.radius*scaling+1)):  
+					addPixel(x%pixelrow,
+						y%pixelcol,
+						dimColor(
+							desaturateColor(Wheel(self.color+int(clientParams["hue"])%256),float(clientParams["saturation"])/100),
+							# Wheel(int(clientParams["hue"])),
+							max(0,(self.radius*scaling-dist(x,y,self.x,self.y))/self.radius*scaling/2*bright)
+						)
+					)
+
 
 def readParams():
 	global clientParams, c, argument
@@ -603,4 +639,4 @@ while looping==True:                              # Loop forever
 	time.sleep(max(0,.016667-(time.time()-lastMillis/1000)))
 	if (loopIterations%6==0): #polls 10 times a second
 		pass
-		readParams();
+		readParams()

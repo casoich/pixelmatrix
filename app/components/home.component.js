@@ -111,15 +111,16 @@ angular.module('pixelmatrix-app').component('home', {
             }
         ];
         if (!$scope.params) {
+            //removed default parameters
     $scope.params={
-        argument:"scurry",
-        brightness:"255",
-        saturation:"100",
-        hue:"26",
-        hue2:"128",
-        count:"67",
-        speed:"100",
-        offset:"50"
+        // argument:"scurry",
+        // brightness:"255",
+        // saturation:"100",
+        // hue:"26",
+        // hue2:"128",
+        // count:"67",
+        // speed:"100",
+        // offset:"50"
     };
           
         }
