@@ -54,15 +54,15 @@
                         </div>
                         <div ng-show="currentShow.paramVisibility.vecx">
                             <label for="vecxSlider">X Vector:&nbsp;{{params.vecx}}</label>
-                            <input type="range" name="vecx" id="vecxSlider" ng-model="params.vecx" min="-1" max="1" class="slider ">
+                            <input type="range" name="vecx" id="vecxSlider" ng-model="params.vecx" min="-1" max="1" step="0.01" class="slider ">
                         </div>
                         <div ng-show="currentShow.paramVisibility.vecy">
                             <label for="vecySlider">Y Vector:&nbsp;{{params.vecy}}</label>
-                            <input type="range" name="vecy" id="vecySlider" ng-model="params.vecy" min="-1" max="1" class="slider ">
+                            <input type="range" name="vecy" id="vecySlider" ng-model="params.vecy" min="-1" max="1" step="0.01" class="slider ">
                         </div>
                         <div ng-show="currentShow.paramVisibility.radius">
                             <label for="radiusSlider">Radius:&nbsp;{{params.radius}}</label>
-                            <input type="range" name="radius" id="radiusSlider" ng-model="params.radius" min="0" max="5" class="slider ">
+                            <input type="range" name="radius" id="radiusSlider" ng-model="params.radius" min="0" max="3" step="0.01" class="slider ">
                         </div>
                     </form>
                 </div>

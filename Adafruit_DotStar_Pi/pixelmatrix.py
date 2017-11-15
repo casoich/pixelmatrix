@@ -239,16 +239,24 @@ class VortexElement:
 		
 		bright=float(clientParams["brightness"])/255
 		if (idx<=int(clientParams["count"])):
-			thiscolor = Wheel(self.color+int(clientParams["hue"])%256) if idx%2=0 else Wheel(self.color+int(clientParams["hue2"])%256)
+			if (idx%2==0):
+				thiscolor=Wheel(self.color+int(clientParams["hue"])%256)
+			else:
+				thiscolor=Wheel(self.color+int(clientParams["hue2"])%256)
+
 			for x in range(int(self.x-float(clientParams["radius"])),int(self.x+float(clientParams["radius"])+1)):         
 				for y in range(int(self.y-float(clientParams["radius"])),int(self.y+float(clientParams["radius"])+1)):  
+
 					addPixel(x%pixelrow,
 						y%pixelcol,
 						dimColor(
-							desaturateColor(thiscolor),float(clientParams["saturation"])/100),
-							max(0,(float(clientParams["radius"])-dist(x,y,self.x,self.y))/float(clientParams["radius"])/2*bright)
+							desaturateColor(thiscolor,float(clientParams["saturation"])/100),
+							# Wheel(int(clientParams["hue"])),
+							max(0,(float(clientParams["radius"])-dist(x,y,self.x,self.y))*bright)
 						)
 					)
+
+					
 
 
 def readParams():
@@ -368,9 +376,9 @@ def vortexInit():
 		VortexElement(
 		random.randrange(pixelrow),
 		random.randrange(pixelcol),
-		0,
-		0,
-		(colorBase+random.randrange(-20,20)),
+		float(random.randrange(-10,10))/100,
+		float(random.randrange(-10,10))/100,
+		(colorBase+random.randrange(-10,10)),
 		1) for i in range(VORTEX_COUNT)
 		]
 def vortex():
@@ -568,7 +576,7 @@ serialoff=0
 pixelcolor=0
 flurryInit()
 scurryInit()
-
+vortexInit()
 # Load image in RGB format and get dimensions:
 print "Loading..."
 
