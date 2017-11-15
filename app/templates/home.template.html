@@ -22,28 +22,27 @@
                         <div >
                             <label for="brightnessSlider">Brightness:&nbsp;{{params.brightness}}</label>
                             <input type="range" id="brightnessSlider" name="Brightness" ng-model="params.brightness" min="0" max="255" class="slider valueslider">
-                            <div class="spacer10">&nbsp;</div>
+                            <!-- <div class="spacer10">&nbsp;</div> -->
                         </div>
                         <div ng-show="currentShow.paramVisibility.hue">
                             <label for="hueSlider">Hue:&nbsp;{{params.hue}}</label>
                             <input type="range" name="hue" id="hueSlider" ng-model="params.hue" min="0" max="255" class="slider hueslider">
-                            <div class="spacer10">&nbsp;</div>
+                            <!-- <div class="spacer10">&nbsp;</div> -->
                         </div>
                         <div ng-show="currentShow.paramVisibility.hue2">
                             <label for="hueSlider2">Accent Hue:&nbsp;{{params.hue2}}</label>
                             <input type="range" name="hue2" id="hueSlider2" ng-model="params.hue2" min="0" max="255" class="slider hueslider">
-                            <div class="spacer10">&nbsp;</div>
+                            <!-- <div class="spacer10">&nbsp;</div> -->
                         </div>
                         <div ng-show="currentShow.paramVisibility.saturation">
                             <label for="saturationSlider">Saturation:&nbsp;{{params.saturation}}</label>
                             <input type="range" id="saturationSlider" name="Saturation" ng-model="params.saturation" min="0" max="100" class="slider valueslider">
-                            <div class="spacer10">&nbsp;</div>
+                            <!-- <div class="spacer10">&nbsp;</div> -->
                         </div>
-
                         <div ng-show="currentShow.paramVisibility.count">
                             <label for="countSlider">Count:&nbsp;{{params.count}}</label>
                             <input type="range" name="count" id="countSlider" ng-model="params.count" min="0" max="100" class="slider ">
-                            <div class="spacer10">&nbsp;</div>
+                            <!-- <div class="spacer10">&nbsp;</div> -->
                         </div>
                         <div ng-show="currentShow.paramVisibility.speed">
                             <label for="speedSlider">Speed:&nbsp;{{params.speed}}</label>
@@ -52,6 +51,18 @@
                         <div ng-show="currentShow.paramVisibility.offset">
                             <label for="offsetSlider">Offset:&nbsp;{{params.offset}}</label>
                             <input type="range" name="offset" id="offsetSlider" ng-model="params.offset" min="0" max="100" class="slider ">
+                        </div>
+                        <div ng-show="currentShow.paramVisibility.vecx">
+                            <label for="vecxSlider">X Vector:&nbsp;{{params.vecx}}</label>
+                            <input type="range" name="vecx" id="vecxSlider" ng-model="params.vecx" min="-1" max="1" class="slider ">
+                        </div>
+                        <div ng-show="currentShow.paramVisibility.vecy">
+                            <label for="vecySlider">Y Vector:&nbsp;{{params.vecy}}</label>
+                            <input type="range" name="vecy" id="vecySlider" ng-model="params.vecy" min="-1" max="1" class="slider ">
+                        </div>
+                        <div ng-show="currentShow.paramVisibility.radius">
+                            <label for="radiusSlider">Radius:&nbsp;{{params.radius}}</label>
+                            <input type="range" name="radius" id="radiusSlider" ng-model="params.radius" min="0" max="5" class="slider ">
                         </div>
                     </form>
                 </div>

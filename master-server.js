@@ -23,10 +23,13 @@ var clientParams={
         brightness:"255",
         saturation:"100",
         hue:"26",
-        hue2:"128",
+        hue2: "128",
+        vecx: "0",
+        vecy: "0",
         count:"67",
         speed:"100",
-        offset:"50"
+        offset: "50",
+        radius: "3"
     };
 var server = new zerorpc.Server({
     hello: function(name, reply) {

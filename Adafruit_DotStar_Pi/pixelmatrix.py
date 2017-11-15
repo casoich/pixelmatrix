@@ -119,6 +119,10 @@ clientParams["saturation"]=83
 clientParams["count"]=15
 clientParams["speed"]=82
 clientParams["offset"]=50
+clientParams["vecx"]=0
+clientParams["vecy"]=0
+clientParams["radius"]=3
+
 # print clientParams
 
 masterHue = 0  # 0-255,      corresponds to Wheel() color
@@ -167,7 +171,9 @@ wid=1.5
 lightPos=0
 FLURRY_COUNT=100
 SCURRY_COUNT=100
+VORTEX_COUNT=100
 scurryList=[]
+vortexList=[]
 class ScurryElement:
 	'defines parameters for one scurry element'
 	def __init__(self,x,y,dx,dy,color,radius):
@@ -205,37 +211,42 @@ class ScurryElement:
 
 class VortexElement:
 	'defines parameters for one vortex element'
-	def __init__(self,x,y,dx,dy,drift,color,radius):
+	def __init__(self,x,y,dx,dy,color,radius):
+		# x,y are the initial coordinates of the point
 		self.x=x
 		self.y=y
+		# dx, dy are the initial vector. these will add with user vector params 
 		self.dx=dx
 		self.dy=dy
-		self.drift=drift
+		# color is the color offset, modified by the user Hue/Hue2 sliders
 		self.color=color
-		self.radius=radius
-
+		#radius is the blob radius, with a linear falloff
+		# self.radius=radius ------- setting this via slider now
+	# active user parameters:
+	# speed, brightness, count, hue, hue2, saturation
+	# new ones:
+	# vecx, vecy, radius
 	def step(self):
 		spd=float(clientParams["speed"])/50
-		self.dx+=(self.x-pixelrow*float(clientParams["offset"])/100)/pixelrow/200+random.uniform(-0.02*spd,.02*spd)
-		self.dy+=random.uniform(-0.01*spd,.01*spd)
-		self.x+=self.dx
-		self.y+=self.dy
-		if (self.x<0 or self.x>pixelrow):
-			self.x=pixelrow*float(clientParams["offset"])/100
-			self.dx=0
-			self.dy=0
+		self.x+=self.dx+float(clientParams["vecx"])*spd
+		self.y+=self.dy+float(clientParams["vecy"])*spd
+		#add the x,y mod clamp here
+		self.x = self.x%pixelrow
+		self.y = self.y%pixelcol
+		
+
 	def draw(self,idx):
-		scaling=1-abs((self.x-(pixelrow/2))/pixelrow)
+		
 		bright=float(clientParams["brightness"])/255
 		if (idx<=int(clientParams["count"])):
-			for x in range(int(self.x-self.radius*scaling),int(self.x+self.radius*scaling+1)):         
-				for y in range(int(self.y-self.radius*scaling),int(self.y+self.radius*scaling+1)):  
+			thiscolor = Wheel(self.color+int(clientParams["hue"])%256) if idx%2=0 else Wheel(self.color+int(clientParams["hue2"])%256)
+			for x in range(int(self.x-float(clientParams["radius"])),int(self.x+float(clientParams["radius"])+1)):         
+				for y in range(int(self.y-float(clientParams["radius"])),int(self.y+float(clientParams["radius"])+1)):  
 					addPixel(x%pixelrow,
 						y%pixelcol,
 						dimColor(
-							desaturateColor(Wheel(self.color+int(clientParams["hue"])%256),float(clientParams["saturation"])/100),
-							# Wheel(int(clientParams["hue"])),
-							max(0,(self.radius*scaling-dist(x,y,self.x,self.y))/self.radius*scaling/2*bright)
+							desaturateColor(thiscolor),float(clientParams["saturation"])/100),
+							max(0,(float(clientParams["radius"])-dist(x,y,self.x,self.y))/float(clientParams["radius"])/2*bright)
 						)
 					)
 
@@ -265,6 +276,7 @@ shownames=[
 "blank",
 "flurry",
 "scurry",
+"vortex",
 "wheelbuster",
 "twinkle",
 "superwhite",
@@ -330,6 +342,7 @@ def flurry():
 
 		# for y in range(0,int(numpixels/pixelrow)):  # For each pixel in column...
 		# addToPixelColor((coordToLight(int(posx)%pixelrow,y)),dimColor(flurryColor[i],.125))
+
 def scurryInit():
 	global scurryList
 	colorBase=0
@@ -341,20 +354,31 @@ def scurryInit():
 		(colorBase+random.randrange(-20,20)),
 		1) for i in range(SCURRY_COUNT)
 		]
-	# print "scurryList length:"+str(len(scurryList))
-
-
-
-
 def scurry():
 	global scurryList
-
 	fade(0.8)
-	# print "scurryList length:"+str(len(scurryList))
-
 	for index, scurryObject in enumerate(scurryList):
 		scurryObject.step()
 		scurryObject.draw(index)
+
+def vortexInit():
+	global vortexList
+	colorBase=0
+	vortexList=[
+		VortexElement(
+		random.randrange(pixelrow),
+		random.randrange(pixelcol),
+		0,
+		0,
+		(colorBase+random.randrange(-20,20)),
+		1) for i in range(VORTEX_COUNT)
+		]
+def vortex():
+	global vortexList
+	fade(0.8)
+	for index, vortexObject in enumerate(vortexList):
+		vortexObject.step()
+		vortexObject.draw(index)
 
 
 def testPattern():
@@ -615,6 +639,10 @@ while looping==True:                              # Loop forever
 		# timePrint()
 	elif (argument=="scurry"):
 		scurry()
+		# timePrint()
+
+	elif (argument=="vortex"):
+		vortex()
 		# timePrint()
 
 	elif (argument=="wheelbuster"):
